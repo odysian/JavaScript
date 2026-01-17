@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      /* CSS Styles */
+      * {
+        font-family: Roboto, Helvetica, Arial, sans-serif;
+      }
+      body {
+        padding: 10px;
+      }
+    </style>
+    <title>Lab 2</title>
+    <script>
+      // Math
+      const add = (a, b) => a + b;
+      const subtract = (a, b) => a - b;
+
+      function sum() {
+        let total = 0;
+        for (let i = 0; i < arguments.length; i++) {
+          total += arguments[i];
+        }
+        return total;
+      }
+      // Title
+      const setTitle = (title = "Hello, this is Lab 2!") =>
+        (document.getElementById("title").innerHTML = title);
+
+      // Name
+      const studentName = (name) =>
+        (document.getElementById("student").innerHTML = name);
+
+      // Seconds
+      let secondsSinceLoad = 0;
+
+      // my formatter keeps trying to wrap it in parenthesis
+      // prettier-ignore
+      const updateSeconds = x =>
+        document.getElementById("seconds").innerHTML = ++secondsSinceLoad;
+
+      // On Page Load
+      document.addEventListener("DOMContentLoaded", function () {
+        setTitle();
+        studentName("Christopher Colosimo");
+        setInterval(updateSeconds, 1000);
+      });
+    </script>
+  </head>
+  <body>
+    <h1 id="title">Title</h1>
+    <h2 id="student">Student Name</h2>
+    Seconds since page loaded:
+    <div id="seconds"></div>
+    <script>
+      document.writeln("<br>");
+      document.writeln(`Add: ${add(10, 15)}<br>`);
+      document.writeln(`Subtract: ${subtract(45, 10)}<br>`);
+      document.writeln(`Sum: ${sum(5, 10, 20, 30)}<br>`);
+    </script>
+  </body>
+</html>
