@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>IT-2320 - Lab 4</h1>
+    <script>
+      /*
+      I chose to use loops with both the key and values to make
+      the output look cleaner.
+      */
+
+      // Step 1 - Student class and display method
+      class Student {
+        constructor(name, major, gpa, classesTaken) {
+          this.name = name;
+          this.major = major;
+          this.gpa = gpa;
+          this.classesTaken = classesTaken;
+        }
+
+        displayProperties() {
+          document.writeln(`<b>Name:</b> ${this.name}<br>`);
+          document.writeln(`<b>Major:</b> ${this.major}<br>`);
+          document.writeln(`<b>GPA:</b> ${this.gpa.toFixed(1)}<br>`);
+          document.writeln(
+            `<b>Classes Taken:</b> ${this.classesTaken.join(", ")}<br><hr>`,
+          );
+        }
+      }
+
+      // Student object with my classes so far
+      let chris = new Student(
+        "Christopher Colosimo",
+        "Programming & Development",
+        4.0,
+        [
+          "ACCT-1311",
+          "BADM-1020",
+          "BADM-2010",
+          "ECON-2000",
+          "ENG-1010",
+          "IT-1025",
+          "IT-1050",
+          "IT-2310",
+        ],
+      );
+
+      chris.displayProperties();
+
+      // Step 2 - Course object and display method using loop
+      let course = {
+        courseId: "IT-2320",
+        title: "IT-2320",
+        crsDesc: "Interactive Internet Programming",
+        creditHrs: 4,
+
+        // For loop with keys to grab property keys and values
+        // Checks type so we don't output the function itself
+        displayCourse: function () {
+          for (let key in this) {
+            if (typeof this[key] !== "function") {
+              document.writeln(`<b>${key}:</b> ${this[key]}<br>`);
+            }
+          }
+          document.writeln("<hr>");
+        },
+      };
+      course.displayCourse();
+
+      // Step 3 - Planet object and properties
+      let planet = {
+        name: "Mercury",
+        diameterMiles: 3031.9,
+      };
+
+      planet.millMilesFromEarth = 48;
+
+      document.writeln(`<b>Planet Name:</b> ${planet.name}<br>`);
+      document.writeln(`<b>Diameter(mi):</b> ${planet.diameterMiles}<br>`);
+      document.writeln(
+        `<b>Miles from Earth(in millions):</b> ${planet.millMilesFromEarth}<br>`,
+      );
+      document.writeln("<hr>");
+
+      // Step 4 - Language set loop with output to console
+      let favoriteLanguages = new Set([
+        "JavaScript",
+        "Python",
+        "Swift",
+        "Dart",
+      ]);
+
+      document.writeln("Output for Step 4 in console<br><hr>");
+      for (let language of favoriteLanguages) {
+        console.log(language);
+      }
+
+      // Step 5 - Credit hours map with key + value loop
+      let creditHrs = new Map([
+        ["IT-1025", 3],
+        ["IT-1050", 3],
+        ["IT-2310", 3],
+        ["IT-2320", 4],
+        ["IT-2030", 4],
+        ["IT-2351", 4],
+        ["IT-2650", 4],
+      ]);
+
+      document.writeln(
+        `<b>Credit Hours for IT-2030:</b> ${creditHrs.get("IT-2030")}<br>`,
+      );
+
+      document.writeln("<br><b>Credit Hours: (Key + Value)</b></br>");
+      for (let [key, value] of creditHrs.entries()) {
+        document.writeln(`<b>${key}:</b> ${value}<br>`);
+      }
+    </script>
+  </body>
+</html>
